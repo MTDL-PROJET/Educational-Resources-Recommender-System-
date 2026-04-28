@@ -1,62 +1,52 @@
-# Your Project Name
+# Educational Resources Recommender System
 
-| | |
-|-|-|
-|`Author` | Your full name
+**Developed by:** ROTARU Diana Maria & GHERGHEL Ana-Maria  
+**Course:** Methods and Techniques of Software Development (MTDL)  
 
-## Description
+---
 
-## Motivation
+## Project Description
+In the modern educational context, students face information overload and struggle to find relevant, verified study materials. Meanwhile, educational experts lack a centralized platform to publish and manage their resources for a well-defined target audience. 
 
-## Architecture
+The **Educational Resources Recommender System** solves this problem by providing a desktop application that directly connects students' needs and interests with expert-validated materials under the careful supervision of an administrator. The application ensures a structured, personalized, and secure learning environment.
 
-### Block diagram
+---
 
-<!-- Make sure the path to the picture is correct -->
-![Block Diagram](schematics/block_diagram.png)
+## Roles and Actors
+The system implements a Role-Based Access Control (RBAC) mechanism featuring 3 types of users:
 
-### Schematic
+1. **Student:** The standard user. Can create a profile, set educational interests, search for materials, and receive personalized recommendations.
+2. **Educational Expert:** The content creator. Initially registers as a student and receives "Expert" rights only after Admin validation. Can add (CRUD), edit, and publish educational resources (title, image, and link are mandatory).
+3. **Administrator:** The platform moderator. Manages "Expert" upgrade requests and can delete accounts that violate platform rules.
 
-![Schematic](schematics/kicad_schematic.png)
+---
 
-### Components
+## Core Features
+* **Identity & Security:** Account creation, Login, Logout, and a secure password recovery flow.
+* **Profile Management:** Upload personal data, profile picture, and select educational interests.
+* **Resource Management (CRUD):** Experts can add resources and toggle their status between *Draft/Unpublished* and *Published*.
+* **Search & Recommendation Engine:** Students can search for resources using specific filters. The system integrates a recommendation algorithm that returns resources whose categories match at least one of the student's saved interests.
 
+---
 
-<!-- This is just an example, fill in with your actual components -->
+## Architecture & Technologies
+The application uses a **Layered Architecture**, strictly following the *Separation of Concerns* principle:
+* **Presentation Layer (GUI):** Built using **JavaFX**.
+* **Business Logic Layer:** Contains the core services, Business Rules validations, and the recommendation algorithm.
+* **Data Access Layer (DAO Layer):** Manages SQL queries utilizing the *DAO Design Pattern* to decouple the database from the application logic. The connection is managed via the *Singleton pattern*.
+* **Database Layer:** A relational database (**MySQL**) storing users, profiles, resources, and categories (tags).
 
-| Device | Usage | Price |
-|--------|--------|-------|
-| Activ Buzzer | Buzzer | [1.5 RON](https://www.optimusdigital.ro/ro/audio-buzzere/635-buzzer-activ-de-3-v.html?search_query=buzzer&results=61) |
-| Push Button | Button | [1 RON](https://www.optimusdigital.ro/ro/butoane-i-comutatoare/1119-buton-6x6x6.html?search_query=buton&results=222) |
-| Jumper Wires | Connecting components | [7 RON](https://www.optimusdigital.ro/ro/fire-fire-mufate/884-set-fire-tata-tata-40p-10-cm.html?search_query=set+fire&results=110) |
-| Breadboard | Project board | [10 RON](https://www.optimusdigital.ro/ro/prototipare-breadboard-uri/8-breadboard-830-points.html?search_query=breadboard&results=145) |
+---
 
-### Libraries
+## Database Structure (Main Entities)
+* `USERS` & `PROFILES`
+* `INTERESTS` & `STUDENT_INTERESTS` (Many-to-Many)
+* `RESOURCES` & `CATEGORIES` (Many-to-Many)
+* `EXPERT_REQUESTS`
 
-<!-- This is just an example, fill in the table with your actual components -->
+---
 
-| Library | Description | Usage |
-|---------|-------------|-------|
-| [lib-name1](link-to-lib) | official description of the lib | Used for accesing the peripherals of the microcontroller  |
-| [lib-name2](link-to-lib) | official description of the lib | Used for accesing the peripherals of the microcontroller  |
-
-## Log
-
-<!-- write every week your progress here -->
-
-### Week 6 - 12 May
-
-### Week 7 - 19 May
-
-### Week 20 - 26 May
-
-
-## Reference links
-
-<!-- Fill in with appropriate links and link titles -->
-
-[Tutorial 1](https://www.youtube.com/watch?v=wdgULBpRoXk&t=1s&ab_channel=BenEater)
-
-[Article 1](https://www.explainthatstuff.com/induction-motors.html)
-
-[Link title](https://projecthub.arduino.cc/)
+## Documentation
+The project was planned and modeled using the following tools and diagrams:
+* **GANTT Chart & RASCI Matrix** for time and responsibility management.
+* **UML Diagrams:** Use Case Diagrams, Activity Diagrams, Sequence Diagrams, Package Diagram, and Class Diagram.
