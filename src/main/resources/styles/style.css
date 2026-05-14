@@ -1,0 +1,219 @@
+.root {
+
+    -fx-background-color: #f5f1eb;
+
+    -fx-font-family: "Segoe UI";
+}
+
+/* LEFT PANEL */
+
+.left-panel {
+
+    -fx-background-color: #e7ddd1;
+
+    -fx-padding: 70;
+}
+
+.big-title {
+
+    -fx-text-fill: #1f1f1f;
+
+    -fx-font-size: 48;
+
+    -fx-font-weight: bold;
+}
+
+.description {
+
+    -fx-text-fill: #5f5f5f;
+
+    -fx-font-size: 16;
+
+    -fx-wrap-text: true;
+}
+
+.quote {
+
+    -fx-text-fill: #7a6f66;
+
+    -fx-font-size: 14;
+
+    -fx-font-style: italic;
+}
+
+/* RIGHT CARD */
+
+.login-card {
+
+    -fx-background-color: white;
+
+    -fx-background-radius: 30;
+
+    -fx-padding: 50;
+
+    -fx-spacing: 18;
+
+    -fx-max-width: 420;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(0,0,0,0.10),
+        30,
+        0.2,
+        0,
+        10
+    );
+}
+
+.login-title {
+
+    -fx-text-fill: #202020;
+
+    -fx-font-size: 30;
+
+    -fx-font-weight: bold;
+}
+
+.login-subtitle {
+
+    -fx-text-fill: #7b7b7b;
+
+    -fx-font-size: 14;
+}
+
+/* INPUTS */
+
+.text-field,
+.password-field {
+
+    -fx-background-color: #f7f4ef;
+
+    -fx-background-radius: 16;
+
+    -fx-border-radius: 16;
+
+    -fx-border-color: transparent;
+
+    -fx-padding: 14;
+
+    -fx-font-size: 14;
+
+    -fx-pref-height: 48;
+
+    -fx-text-fill: #222222;
+
+    -fx-prompt-text-fill: #9a9a9a;
+}
+
+.text-field:focused,
+.password-field:focused {
+
+    -fx-border-color: #c58c62;
+
+    -fx-border-width: 2;
+}
+
+/* BUTTON */
+
+.button {
+
+    -fx-background-color: #1f1f1f;
+
+    -fx-text-fill: white;
+
+    -fx-font-size: 14;
+
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 16;
+
+    -fx-pref-height: 48;
+
+    -fx-cursor: hand;
+}
+
+.button:hover {
+
+    -fx-background-color: #333333;
+}
+
+/* SECONDARY BUTTON */
+
+.secondary-button {
+
+    -fx-background-color: transparent;
+
+    -fx-text-fill: #1f1f1f;
+
+    -fx-border-color: #d8d0c7;
+
+    -fx-border-radius: 16;
+
+    -fx-background-radius: 16;
+}
+
+.secondary-button:hover {
+
+    -fx-background-color: #f7f4ef;
+}
+```
+
+---
+
+## login.fxml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.LoginController">
+
+    <VBox prefWidth="520"
+          spacing="25"
+          alignment="CENTER_LEFT"
+          styleClass="left-panel">
+
+        <Label text="Learn better.\nFaster."
+               styleClass="big-title"/>
+
+        <Label text="A curated educational platform where students discover resources through intelligent recommendations."
+               styleClass="description"/>
+
+        <Label text="Built for modern learners."
+               styleClass="quote"/>
+
+    </VBox>
+
+    <StackPane HBox.hgrow="ALWAYS"
+               alignment="CENTER">
+
+        <VBox alignment="CENTER"
+              styleClass="login-card">
+
+            <Label text="Welcome back"
+                   styleClass="login-title"/>
+
+            <Label text="Sign in to continue"
+                   styleClass="login-subtitle"/>
+
+            <TextField fx:id="emailField"
+                       promptText="Email"/>
+
+            <PasswordField fx:id="passwordField"
+                            promptText="Password"/>
+
+            <Button text="LOGIN"
+                    onAction="#handleLogin"/>
+
+            <Button text="CREATE ACCOUNT"
+                    styleClass="secondary-button"/>
+
+        </VBox>
+
+    </StackPane>
+
+</HBox>

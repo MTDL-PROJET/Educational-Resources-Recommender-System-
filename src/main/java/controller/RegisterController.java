@@ -1,0 +1,91 @@
+package controller;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import service.AuthService;
+import utils.AlertUtils;
+
+public class RegisterController {
+
+    @FXML
+    private TextField nameField;
+
+    @FXML
+    private TextField emailField;
+
+    @FXML
+    private PasswordField passwordField;
+
+    private final AuthService authService =
+            new AuthService();
+
+    @FXML
+    public void handleRegister() {
+
+        boolean success =
+                authService.register(
+
+                        nameField.getText(),
+                        emailField.getText(),
+                        passwordField.getText()
+
+                );
+
+        if(success) {
+
+            goToLogin();
+
+        } else {
+
+            AlertUtils.showError(
+                    "Register Failed",
+                    "Could not create account."
+            );
+        }
+
+        AlertUtils.showSuccess(
+                "Success",
+                "Account created successfully!"
+        );
+    }
+
+    @FXML
+    public void goToLogin() {
+
+        try {
+
+            FXMLLoader loader =
+                    new FXMLLoader(
+                            getClass().getResource(
+                                    "/view/login.fxml"
+                            )
+                    );
+
+            Scene scene =
+                    new Scene(loader.load(), 1200, 700);
+
+            scene.getStylesheets().add(
+                    getClass()
+                            .getResource(
+                                    "/styles/style.css"
+                            )
+                            .toExternalForm()
+            );
+
+            Stage stage =
+                    (Stage) nameField
+                            .getScene()
+                            .getWindow();
+
+            stage.setScene(scene);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+    }
+}

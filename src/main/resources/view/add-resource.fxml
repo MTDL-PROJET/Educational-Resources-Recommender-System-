@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.ResourceController">
+
+    <center>
+
+        <VBox spacing="18"
+              alignment="CENTER"
+              maxWidth="500">
+
+            <padding>
+                <Insets top="40"
+                        right="40"
+                        bottom="40"
+                        left="40"/>
+            </padding>
+
+            <Label text="Add Resource"
+                   style="
+                   -fx-font-size: 28;
+                   -fx-font-weight: bold;
+                   "/>
+
+            <TextField fx:id="titleField"
+                       promptText="Title"/>
+
+            <TextArea fx:id="descriptionField"
+                      promptText="Description"
+                      prefHeight="120"/>
+
+            <TextField fx:id="imageField"
+                       promptText="Image URL"/>
+
+            <TextField fx:id="linkField"
+                       promptText="External Link"/>
+
+            <TextField fx:id="categoryField"
+                       promptText="Category"/>
+
+            <Button text="ADD RESOURCE"
+                    onAction="#handleAddResource"/>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

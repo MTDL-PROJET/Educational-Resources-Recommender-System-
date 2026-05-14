@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml">
+
+    <left>
+
+        <VBox prefWidth="220"
+              spacing="15"
+
+              style="
+              -fx-background-color: #1f1f1f;
+              -fx-padding: 25;
+              ">
+
+            <Label text="EXPERT PANEL"
+                   style="
+                   -fx-text-fill: white;
+                   -fx-font-size: 24;
+                   -fx-font-weight: bold;
+                   "/>
+
+            <Button text="Add Resource"/>
+
+            <Button text="Manage Resources"/>
+
+            <Button text="Logout"/>
+
+        </VBox>
+
+    </left>
+
+    <center>
+
+        <fx:include source="add-resource.fxml"/>
+
+    </center>
+
+</BorderPane>

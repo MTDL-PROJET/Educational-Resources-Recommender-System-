@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.StudentController">
+
+    <left>
+
+        <VBox prefWidth="220"
+              spacing="15"
+
+              style="
+              -fx-background-color: #1f1f1f;
+              -fx-padding: 25;
+              ">
+
+            <Label text="STUDENT"
+                   style="
+                   -fx-text-fill: white;
+                   -fx-font-size: 24;
+                   -fx-font-weight: bold;
+                   "/>
+
+            <Button text="Browse"
+                    onAction="#goToBrowse"/>
+
+            <Button text="Recommendations"
+                    onAction="#goToRecommendations"/>
+
+            <Button text="Profile"
+                    onAction="#goToProfile"/>
+
+            <Button text="Request Expert Access"/>
+
+            <Button text="Logout"
+                    onAction="#handleLogout"/>
+
+        </VBox>
+
+    </left>
+
+    <center>
+
+        <VBox spacing="20">
+
+            <padding>
+                <Insets top="30"
+                        right="30"
+                        bottom="30"
+                        left="30"/>
+            </padding>
+
+            <Label text="Published Resources"
+                   style="
+               -fx-font-size: 30;
+               -fx-font-weight: bold;
+               "/>
+
+            <HBox spacing="10">
+
+                <TextField fx:id="searchField"
+                           promptText="Search resources..."/>
+
+                <Button text="SEARCH"
+                        onAction="#handleSearch"/>
+
+            </HBox>
+
+            <TabPane fx:id="tabPane"
+                     tabClosingPolicy="UNAVAILABLE">
+
+                <tabs>
+
+                    <Tab fx:id="resourcesTab"
+                         text="Resources">
+
+                        <VBox spacing="15">
+
+                            <ListView fx:id="resourceListView"
+                                      prefHeight="400"/>
+
+                        </VBox>
+
+                    </Tab>
+
+                    <Tab fx:id="profileTab"
+                         text="Profile">
+
+                        <fx:include source="profile.fxml"/>
+
+                    </Tab>
+
+                </tabs>
+
+            </TabPane>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

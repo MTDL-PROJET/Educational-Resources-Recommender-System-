@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.RegisterController">
+
+    <VBox prefWidth="520"
+          spacing="25"
+          alignment="CENTER_LEFT"
+          styleClass="left-panel">
+
+        <Label text="Create your\\nlearning space."
+               styleClass="big-title"/>
+
+        <Label text="Join the platform and discover personalized educational resources."
+               styleClass="description"/>
+
+        <Label text="Powered by recommendations."
+               styleClass="quote"/>
+
+    </VBox>
+
+    <StackPane HBox.hgrow="ALWAYS"
+               alignment="CENTER">
+
+        <VBox alignment="CENTER"
+              styleClass="login-card">
+
+            <Label text="Create account"
+                   styleClass="login-title"/>
+
+            <Label text="Start your journey"
+                   styleClass="login-subtitle"/>
+
+            <TextField fx:id="nameField"
+                       promptText="Full Name"/>
+
+            <TextField fx:id="emailField"
+                       promptText="Email"/>
+
+            <PasswordField fx:id="passwordField"
+                           promptText="Password"/>
+
+            <Button text="REGISTER"
+                    onAction="#handleRegister"/>
+
+            <Button text="BACK TO LOGIN"
+                    onAction="#goToLogin"
+                    styleClass="secondary-button"/>
+
+        </VBox>
+
+    </StackPane>
+
+</HBox>

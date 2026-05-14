@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.AdminController">
+
+    <left>
+
+        <VBox prefWidth="240"
+              spacing="18"
+
+              style="
+              -fx-background-color: #1f1f1f;
+              -fx-padding: 25;
+              ">
+
+            <Label text="ADMIN PANEL"
+                   style="
+                   -fx-text-fill: white;
+                   -fx-font-size: 28;
+                   -fx-font-weight: bold;
+                   "/>
+
+            <Button text="Pending Requests"
+                    onAction="#showPendingRequests"/>
+
+            <Button text="Manage Users"
+                    onAction="#showUsers"/>
+
+            <Button text="Logout"
+                    onAction="#handleLogout"/>
+
+        </VBox>
+
+    </left>
+
+    <center>
+
+        <VBox spacing="20">
+
+            <padding>
+                <Insets top="30"
+                        right="30"
+                        bottom="30"
+                        left="30"/>
+            </padding>
+
+            <Label text="Expert Requests"
+                   style="
+                   -fx-font-size: 30;
+                   -fx-font-weight: bold;
+                   "/>
+
+            <ListView fx:id="requestListView"
+                      prefHeight="400"/>
+
+            <HBox spacing="15">
+
+                <Button text="APPROVE"
+                        onAction="#approveSelectedUser"/>
+
+                <Button text="DELETE USER"
+                        onAction="#deleteSelectedUser"/>
+
+            </HBox>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>
