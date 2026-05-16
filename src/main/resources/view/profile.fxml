@@ -29,6 +29,14 @@
     <TextField fx:id="imageField"
                promptText="Profile Picture URL"/>
 
+    <TextField fx:id="emailField"
+               promptText="Email"
+               editable="false"/>
+
+    <TextField fx:id="roleField"
+               promptText="Role"
+               editable="false"/>
+
     <Button text="UPDATE PROFILE"
             onAction="#handleUpdateProfile"/>
 

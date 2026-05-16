@@ -4,7 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.ExpertController">
 
     <left>
 
@@ -23,11 +24,14 @@
                    -fx-font-weight: bold;
                    "/>
 
-            <Button text="Add Resource"/>
+            <Button text="Add Resource"
+                    onAction="#goToAddResource"/>
 
-            <Button text="Manage Resources"/>
+            <Button text="Manage Resources"
+                    onAction="#goToManageResources"/>
 
-            <Button text="Logout"/>
+            <Button text="Logout"
+                    onAction="#handleLogout"/>
 
         </VBox>
 

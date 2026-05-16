@@ -11,6 +11,7 @@ public class TestResource {
                 new ResourceService();
 
         boolean success =
+
                 resourceService.addResource(
 
                         "Java Backend Course",
@@ -23,8 +24,11 @@ public class TestResource {
 
                         "Programming",
 
-                        1
+                        "java,spring,backend",
 
+                        "Beginner",
+
+                        1
                 );
 
         if(success) {

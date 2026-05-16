@@ -20,6 +20,9 @@ import javafx.stage.Stage;
 import model.Resource;
 
 import service.ResourceService;
+import service.UserService;
+
+import utils.AlertUtils;
 
 import java.util.List;
 
@@ -111,7 +114,12 @@ public class StudentController {
         String keyword =
                 searchField.getText();
 
-        resourceDAO.incrementSearchHits(keyword);
+        if(keyword == null || keyword.isBlank()) {
+
+            loadPublishedResources();
+
+            return;
+        }
 
         resourceListView.getItems().clear();
 
@@ -121,6 +129,21 @@ public class StudentController {
                         .searchResources(keyword);
 
         for(Resource resource : resources) {
+
+            interactionDAO.saveInteraction(
+
+                    SessionManager
+                            .getCurrentUser()
+                            .getId(),
+
+                    resource.getId(),
+
+                    "SEARCH"
+            );
+
+            resourceDAO.incrementSearchHits(
+                    resource.getId()
+            );
 
             resourceDAO.updateRecommendationScore(
                     resource.getId()
@@ -172,6 +195,35 @@ public class StudentController {
     }
 
     @FXML
+    public void requestExpertAccess() {
+
+        boolean success =
+
+                new UserService()
+                        .requestExpertRole(
+
+                                SessionManager
+                                        .getCurrentUser()
+                                        .getId()
+                        );
+
+        if(success) {
+
+            AlertUtils.showSuccess(
+                    "Request Sent",
+                    "Your request was sent to admin."
+            );
+
+        } else {
+
+            AlertUtils.showError(
+                    "Error",
+                    "Could not send request."
+            );
+        }
+    }
+
+    @FXML
     public void handleLogout() {
 
         SessionManager.logout();
@@ -219,6 +271,11 @@ public class StudentController {
         } catch (Exception e) {
 
             e.printStackTrace();
+
+            AlertUtils.showError(
+                    "Error",
+                    "Could not logout."
+            );
         }
     }
 }

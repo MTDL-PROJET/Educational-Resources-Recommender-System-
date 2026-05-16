@@ -14,7 +14,9 @@ public class ElasticSearchService {
     private final ElasticsearchClient client =
             ElasticsearchConfig.getClient();
 
-    public List<Resource> searchResources(String keyword) {
+    public List<Resource> searchResources(
+            String keyword
+    ) {
 
         List<Resource> resources =
                 new ArrayList<>();
@@ -34,16 +36,13 @@ public class ElasticSearchService {
                                                     .query(keyword)
 
                                                     .fields(
-                                                            "title",
-                                                            "description",
-                                                            "category"
-                                                    )
-
-                                                    .fields(
                                                             "title^3",
                                                             "category^2",
-                                                            "description"
+                                                            "description",
+                                                            "tags"
                                                     )
+
+                                                    .fuzziness("AUTO")
                                             )
                                     ),
 

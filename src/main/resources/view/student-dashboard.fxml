@@ -33,7 +33,8 @@
             <Button text="Profile"
                     onAction="#goToProfile"/>
 
-            <Button text="Request Expert Access"/>
+            <Button text="Request Expert Access"
+                    onAction="#requestExpertAccess"/>
 
             <Button text="Logout"
                     onAction="#handleLogout"/>

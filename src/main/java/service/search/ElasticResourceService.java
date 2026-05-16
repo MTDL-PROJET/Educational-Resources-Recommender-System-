@@ -68,23 +68,34 @@ public class ElasticResourceService {
 
                                     .query(q -> q
 
-                                            .multiMatch(m -> m
+                                            .bool(b -> b
 
-                                                    .query(keyword)
+                                                    .must(m -> m
 
-                                                    .fields(
+                                                            .multiMatch(mm -> mm
 
-                                                            "title^3",
+                                                                    .query(keyword)
 
-                                                            "category^2",
+                                                                    .fields(
+                                                                            "title^3",
+                                                                            "category^2",
+                                                                            "tags^2",
+                                                                            "description"
+                                                                    )
 
-                                                            "tags^2",
-
-                                                            "description"
-
+                                                                    .fuzziness("AUTO")
+                                                            )
                                                     )
 
-                                                    .fuzziness("AUTO")
+                                                    .filter(f -> f
+
+                                                            .term(t -> t
+
+                                                                    .field("status.keyword")
+
+                                                                    .value("PUBLISHED")
+                                                            )
+                                                    )
                                             )
                                     ),
 
@@ -134,13 +145,21 @@ public class ElasticResourceService {
 
                                             .field(f -> f
 
-                                                    .field(
-                                                            "recommendation_score"
-                                                    )
+                                                    .field("recommendationScore")
 
                                                     .order(
                                                             co.elastic.clients.elasticsearch._types.SortOrder.Desc
                                                     )
+                                            )
+                                    )
+
+                                    .query(q -> q
+
+                                            .term(t -> t
+
+                                                    .field("status.keyword")
+
+                                                    .value("PUBLISHED")
                                             )
                                     ),
 

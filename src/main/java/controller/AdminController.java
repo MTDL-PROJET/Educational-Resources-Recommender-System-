@@ -1,14 +1,15 @@
 package controller;
 
+import config.SessionManager;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 import model.User;
 import service.UserService;
 import utils.AlertUtils;
-import config.SessionManager;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 import java.util.List;
 
@@ -16,6 +17,9 @@ public class AdminController {
 
     @FXML
     private ListView<String> requestListView;
+
+    @FXML
+    private Label titleLabel;
 
     private final UserService userService =
             new UserService();
@@ -29,6 +33,10 @@ public class AdminController {
     }
 
     private void loadRequests() {
+
+        titleLabel.setText(
+                "Expert Requests"
+        );
 
         requestListView.getItems().clear();
 
@@ -53,6 +61,7 @@ public class AdminController {
     public void approveSelectedUser() {
 
         int selectedIndex =
+
                 requestListView
                         .getSelectionModel()
                         .getSelectedIndex();
@@ -90,6 +99,7 @@ public class AdminController {
     public void deleteSelectedUser() {
 
         int selectedIndex =
+
                 requestListView
                         .getSelectionModel()
                         .getSelectedIndex();
@@ -126,27 +136,34 @@ public class AdminController {
     @FXML
     public void showPendingRequests() {
 
-        System.out.println("Pending requests");
+        loadRequests();
     }
 
     @FXML
     public void showUsers() {
 
-        System.out.println("Users");
+        titleLabel.setText(
+                "All Users"
+        );
+
+        requestListView.getItems().clear();
+
+        List<User> users =
+                userService.getAllUsers();
+
+        for(User user : users) {
+
+            requestListView.getItems().add(
+
+                    user.getId()
+                            + " | "
+                            + user.getFullName()
+                            + " | "
+                            + user.getRole()
+
+            );
+        }
     }
-
-    @FXML
-    public void approveRequest() {
-
-        System.out.println("Approved");
-    }
-
-    @FXML
-    public void deleteUser() {
-
-        System.out.println("Deleted");
-    }
-
 
     @FXML
     public void handleLogout() {
@@ -163,7 +180,11 @@ public class AdminController {
                     );
 
             Scene scene =
-                    new Scene(loader.load(), 1200, 700);
+                    new Scene(
+                            loader.load(),
+                            1200,
+                            700
+                    );
 
             scene.getStylesheets().add(
 

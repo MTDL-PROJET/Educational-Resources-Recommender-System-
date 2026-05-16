@@ -68,7 +68,7 @@ public class InterestDAO {
 
         String sql =
 
-                "INSERT INTO student_interests " +
+                "INSERT IGNORE INTO student_interests " +
 
                         "(student_id, interest_id) " +
 
@@ -99,5 +99,41 @@ public class InterestDAO {
         }
 
         return false;
+    }
+
+    public List<String> getAllInterests() {
+
+        List<String> interests =
+                new ArrayList<>();
+
+        String sql =
+                "SELECT name FROM interests";
+
+        try (
+
+                Connection connection =
+                        DatabaseConfig.getConnection();
+
+                PreparedStatement statement =
+                        connection.prepareStatement(sql)
+
+        ) {
+
+            ResultSet resultSet =
+                    statement.executeQuery();
+
+            while(resultSet.next()) {
+
+                interests.add(
+                        resultSet.getString("name")
+                );
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+        return interests;
     }
 }

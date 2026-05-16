@@ -29,6 +29,12 @@ public class ResourceController {
             new ResourceService();
 
     @FXML
+    private TextField tagsField;
+
+    @FXML
+    private TextField difficultyField;
+
+    @FXML
     public void handleAddResource() {
 
         User currentUser =
@@ -46,6 +52,10 @@ public class ResourceController {
                         linkField.getText(),
 
                         categoryField.getText(),
+
+                        tagsField.getText(),
+
+                        difficultyField.getText(),
 
                         currentUser.getId()
 
@@ -80,5 +90,9 @@ public class ResourceController {
         linkField.clear();
 
         categoryField.clear();
+
+        tagsField.clear();
+
+        difficultyField.clear();
     }
 }

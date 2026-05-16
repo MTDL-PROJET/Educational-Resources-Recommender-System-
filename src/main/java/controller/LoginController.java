@@ -24,6 +24,12 @@ public class LoginController {
             new AuthService();
 
     @FXML
+    public void initialize() {
+
+        emailField.requestFocus();
+    }
+
+    @FXML
     public void handleLogin() {
 
         String email =
@@ -31,6 +37,16 @@ public class LoginController {
 
         String password =
                 passwordField.getText();
+
+        if(email.isBlank() || password.isBlank()) {
+
+            AlertUtils.showError(
+                    "Error",
+                    "All fields are required."
+            );
+
+            return;
+        }
 
         User user =
                 authService.login(
@@ -80,13 +96,31 @@ public class LoginController {
                 }
 
                 Scene scene =
-                        new Scene(loader.load());
+                        new Scene(
+                                loader.load(),
+                                1200,
+                                700
+                        );
+
+                scene.getStylesheets().add(
+
+                        getClass()
+                                .getResource(
+                                        "/styles/style.css"
+                                )
+                                .toExternalForm()
+                );
 
                 stage.setScene(scene);
 
             } catch (Exception e) {
 
                 e.printStackTrace();
+
+                AlertUtils.showError(
+                        "Error",
+                        "Could not load dashboard."
+                );
             }
 
         } else {
@@ -111,9 +145,14 @@ public class LoginController {
                     );
 
             Scene scene =
-                    new Scene(loader.load(), 1200, 700);
+                    new Scene(
+                            loader.load(),
+                            1200,
+                            700
+                    );
 
             scene.getStylesheets().add(
+
                     getClass()
                             .getResource(
                                     "/styles/style.css"
@@ -131,6 +170,11 @@ public class LoginController {
         } catch (Exception e) {
 
             e.printStackTrace();
+
+            AlertUtils.showError(
+                    "Error",
+                    "Could not load register page."
+            );
         }
     }
 }

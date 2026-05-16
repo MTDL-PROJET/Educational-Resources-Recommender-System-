@@ -22,14 +22,14 @@ public class ResourceService {
             new ResourceDAO();
 
     public boolean addResource(
-
             String title,
             String description,
             String imageUrl,
             String externalLink,
             String category,
+            String tags,
+            String difficulty,
             int expertId
-
     ) {
 
         if(title.isBlank()
@@ -52,6 +52,10 @@ public class ResourceService {
         resource.setExternalLink(externalLink);
 
         resource.setCategory(category);
+
+        resource.setTags(tags);
+
+        resource.setDifficulty(difficulty);
 
         resource.setStatus(
                 ResourceStatus.UNPUBLISHED

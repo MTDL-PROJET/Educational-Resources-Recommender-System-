@@ -15,6 +15,12 @@ public class ProfileController {
     @FXML
     private TextField imageField;
 
+    @FXML
+    private TextField emailField;
+
+    @FXML
+    private TextField roleField;
+
     private final UserService userService =
             new UserService();
 
@@ -30,6 +36,14 @@ public class ProfileController {
 
         imageField.setText(
                 currentUser.getProfilePicture()
+        );
+
+        emailField.setText(
+                currentUser.getEmail()
+        );
+
+        roleField.setText(
+                currentUser.getRole().name()
         );
     }
 
@@ -51,6 +65,14 @@ public class ProfileController {
                 );
 
         if(success) {
+
+            currentUser.setFullName(
+                    nameField.getText()
+            );
+
+            currentUser.setProfilePicture(
+                    imageField.getText()
+            );
 
             AlertUtils.showSuccess(
                     "Updated",

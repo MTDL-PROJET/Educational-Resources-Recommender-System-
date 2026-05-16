@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.AdminController">
+            fx:controller="controller.AdminController"
+            fx:id="rootPane">
 
     <left>
 
@@ -48,7 +49,8 @@
                         left="30"/>
             </padding>
 
-            <Label text="Expert Requests"
+            <Label fx:id="titleLabel"
+                   text="Expert Requests"
                    style="
                    -fx-font-size: 30;
                    -fx-font-weight: bold;

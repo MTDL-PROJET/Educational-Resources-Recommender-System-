@@ -42,6 +42,12 @@
             <TextField fx:id="categoryField"
                        promptText="Category"/>
 
+            <TextField fx:id="tagsField"
+                       promptText="Tags (java,spring,backend)"/>
+
+            <TextField fx:id="difficultyField"
+                       promptText="Difficulty (Beginner/Intermediate/Advanced)"/>
+
             <Button text="ADD RESOURCE"
                     onAction="#handleAddResource"/>
 

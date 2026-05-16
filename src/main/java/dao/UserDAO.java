@@ -316,4 +316,38 @@ public class UserDAO {
 
         return false;
     }
+
+    public boolean rejectExpertRequest(
+            int userId
+    ) {
+
+        String sql =
+
+                "UPDATE users " +
+
+                        "SET expert_request = false " +
+
+                        "WHERE id = ?";
+
+        try (
+
+                Connection connection =
+                        DatabaseConfig.getConnection();
+
+                PreparedStatement statement =
+                        connection.prepareStatement(sql)
+
+        ) {
+
+            statement.setInt(1, userId);
+
+            return statement.executeUpdate() > 0;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 }

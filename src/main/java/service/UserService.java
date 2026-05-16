@@ -55,4 +55,17 @@ public class UserService {
 
         );
     }
+
+    public List<User> getAllUsers() {
+
+        return userDAO.getAllUsers();
+    }
+
+    public boolean rejectExpertRequest(
+            int userId
+    ) {
+
+        return userDAO
+                .rejectExpertRequest(userId);
+    }
 }
