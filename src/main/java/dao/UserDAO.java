@@ -350,4 +350,74 @@ public class UserDAO {
 
         return false;
     }
+
+    public List<User> getAllUsers() {
+
+        List<User> users =
+                new ArrayList<>();
+
+        String sql =
+                "SELECT * FROM users";
+
+        try (
+
+                Connection connection =
+                        DatabaseConfig.getConnection();
+
+                PreparedStatement statement =
+                        connection.prepareStatement(sql)
+
+        ) {
+
+            ResultSet resultSet =
+                    statement.executeQuery();
+
+            while(resultSet.next()) {
+
+                User user =
+                        new User();
+
+                user.setId(
+                        resultSet.getInt("id")
+                );
+
+                user.setFullName(
+                        resultSet.getString("full_name")
+                );
+
+                user.setEmail(
+                        resultSet.getString("email")
+                );
+
+                user.setProfilePicture(
+                        resultSet.getString("profile_picture")
+                );
+
+                user.setExpertRequest(
+                        resultSet.getBoolean("expert_request")
+                );
+
+                user.setValidated(
+                        resultSet.getBoolean("validated")
+                );
+
+                user.setRole(
+
+                        Role.valueOf(
+
+                                resultSet.getString("role")
+                        )
+                );
+
+                users.add(user);
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+        return users;
+    }
+
 }
