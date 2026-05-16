@@ -37,6 +37,11 @@ public class RegisterController {
 
         if(success) {
 
+            AlertUtils.showSuccess(
+                    "Success",
+                    "Account created successfully!"
+            );
+
             goToLogin();
 
         } else {
@@ -46,11 +51,6 @@ public class RegisterController {
                     "Could not create account."
             );
         }
-
-        AlertUtils.showSuccess(
-                "Success",
-                "Account created successfully!"
-        );
     }
 
     @FXML

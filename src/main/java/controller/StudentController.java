@@ -111,12 +111,21 @@ public class StudentController {
         String keyword =
                 searchField.getText();
 
+        resourceDAO.incrementSearchHits(keyword);
+
         resourceListView.getItems().clear();
 
         List<Resource> resources =
 
                 resourceService
                         .searchResources(keyword);
+
+        for(Resource resource : resources) {
+
+            resourceDAO.updateRecommendationScore(
+                    resource.getId()
+            );
+        }
 
         resourceListView.getItems().addAll(
                 resources

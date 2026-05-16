@@ -135,7 +135,7 @@ public class ElasticResourceService {
                                             .field(f -> f
 
                                                     .field(
-                                                            "recommendationScore"
+                                                            "recommendation_score"
                                                     )
 
                                                     .order(
@@ -226,4 +226,6 @@ public class ElasticResourceService {
             e.printStackTrace();
         }
     }
+
+
 }

@@ -32,7 +32,7 @@ public class ElasticsearchConfig {
                         AuthScope.ANY,
                         new UsernamePasswordCredentials(
                                 "elastic",
-                                "xQBMH1=O+1KoJPJUaE2X"
+                                "elastic"
                         )
                 );
 

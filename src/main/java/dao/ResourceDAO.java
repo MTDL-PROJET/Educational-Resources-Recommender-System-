@@ -35,7 +35,10 @@ public class ResourceDAO {
                         DatabaseConfig.getConnection();
 
                 PreparedStatement statement =
-                        connection.prepareStatement(sql)
+                        connection.prepareStatement(
+                                sql,
+                                PreparedStatement.RETURN_GENERATED_KEYS
+                        )
 
         ) {
 
@@ -86,6 +89,16 @@ public class ResourceDAO {
             int rows =
                     statement.executeUpdate();
 
+            ResultSet generatedKeys =
+                    statement.getGeneratedKeys();
+
+            if(generatedKeys.next()) {
+
+                resource.setId(
+                        generatedKeys.getInt(1)
+                );
+            }
+
             if(rows > 0) {
 
                 elasticResourceService
@@ -109,7 +122,8 @@ public class ResourceDAO {
 
         String sql =
                 "SELECT * FROM resources " +
-                        "WHERE status = 'PUBLISHED'";
+                        "WHERE status = 'PUBLISHED' " +
+                        "ORDER BY recommendation_score DESC";
 
         try (
 
@@ -221,6 +235,15 @@ public class ResourceDAO {
 
             int rows =
                     statement.executeUpdate();
+
+            if(rows > 0) {
+
+                Resource resource =
+                        getResourceById(resourceId);
+
+                elasticResourceService
+                        .updateResource(resource);
+            }
 
             return rows > 0;
 
@@ -469,9 +492,7 @@ public class ResourceDAO {
         }
     }
 
-    public void updateRecommendationScore(
-            int resourceId
-    ) {
+    public void updateRecommendationScore(int resourceId) {
 
         String sql =
 
@@ -479,15 +500,9 @@ public class ResourceDAO {
 
                         "SET recommendation_score = " +
 
-                        "(" +
-
-                        "views * 0.4 + " +
-
-                        "likes_count * 0.3 + " +
-
-                        "search_hits * 0.3" +
-
-                        ") " +
+                        "(views * 0.4) + " +
+                        "(likes_count * 0.4) + " +
+                        "(search_hits * 0.2) " +
 
                         "WHERE id = ?";
 
@@ -510,6 +525,7 @@ public class ResourceDAO {
             e.printStackTrace();
         }
     }
+
     public void incrementViews(
             int resourceId
     ) {
@@ -545,5 +561,164 @@ public class ResourceDAO {
         }
     }
 
+
+    public List<Resource> getTrendingResources() {
+
+        List<Resource> resources =
+                new ArrayList<>();
+
+        String sql =
+
+                "SELECT * FROM resources " +
+
+                        "WHERE status = 'PUBLISHED' " +
+
+                        "ORDER BY recommendation_score DESC, views DESC " +
+
+                        "LIMIT 5";
+
+        try (
+
+                Connection connection =
+                        DatabaseConfig.getConnection();
+
+                PreparedStatement statement =
+                        connection.prepareStatement(sql)
+
+        ) {
+
+            ResultSet resultSet =
+                    statement.executeQuery();
+
+            while(resultSet.next()) {
+
+                Resource resource =
+                        new Resource();
+
+                resource.setId(
+                        resultSet.getInt("id")
+                );
+
+                resource.setTitle(
+                        resultSet.getString("title")
+                );
+
+                resource.setCategory(
+                        resultSet.getString("category")
+                );
+
+                resource.setDifficulty(
+                        resultSet.getString("difficulty")
+                );
+
+                resources.add(resource);
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+        return resources;
+    }
+
+    public Resource getResourceById(
+            int resourceId
+    ) {
+
+        String sql =
+                "SELECT * FROM resources " +
+                        "WHERE id = ?";
+
+        try (
+
+                Connection connection =
+                        DatabaseConfig.getConnection();
+
+                PreparedStatement statement =
+                        connection.prepareStatement(sql)
+
+        ) {
+
+            statement.setInt(1, resourceId);
+
+            ResultSet resultSet =
+                    statement.executeQuery();
+
+            if(resultSet.next()) {
+
+                Resource resource =
+                        new Resource();
+
+                resource.setId(
+                        resultSet.getInt("id")
+                );
+
+                resource.setTitle(
+                        resultSet.getString("title")
+                );
+
+                resource.setDescription(
+                        resultSet.getString("description")
+                );
+
+                resource.setImageUrl(
+                        resultSet.getString("image_url")
+                );
+
+                resource.setExternalLink(
+                        resultSet.getString("external_link")
+                );
+
+                resource.setCategory(
+                        resultSet.getString("category")
+                );
+
+                resource.setStatus(
+                        ResourceStatus.valueOf(
+                                resultSet.getString("status")
+                        )
+                );
+
+                resource.setExpertId(
+                        resultSet.getInt("expert_id")
+                );
+
+                resource.setTags(
+                        resultSet.getString("tags")
+                );
+
+                resource.setDifficulty(
+                        resultSet.getString("difficulty")
+                );
+
+                resource.setViews(
+                        resultSet.getInt("views")
+                );
+
+                resource.setLikesCount(
+                        resultSet.getInt("likes_count")
+                );
+
+                resource.setSearchHits(
+                        resultSet.getInt("search_hits")
+                );
+
+                resource.setRecommendationScore(
+                        resultSet.getDouble(
+                                "recommendation_score"
+                        )
+                );
+
+                return resource;
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
 }
