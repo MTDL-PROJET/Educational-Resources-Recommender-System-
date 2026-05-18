@@ -5,39 +5,56 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.StudentController">
+            fx:controller="controller.StudentController"
+            fx:id="rootPane"
+            style="-fx-background-color: #f5f1eb;">
 
     <left>
 
-        <VBox prefWidth="220"
+        <VBox prefWidth="250"
               spacing="15"
+              style="-fx-background-color: #1f1f1f; -fx-padding: 35 20 20 20;">
 
-              style="
-              -fx-background-color: #1f1f1f;
-              -fx-padding: 25;
-              ">
+            <Label text="STUDENT HUB"
+                   style="-fx-text-fill: white;
+                          -fx-font-size: 22;
+                          -fx-font-weight: bold;
+                          -fx-border-color: #c58c62;
+                          -fx-border-width: 0 0 2 0;
+                          -fx-padding: 0 0 8 0;
+                          -fx-margin: 0 0 15 0;"/>
 
-            <Label text="STUDENT"
-                   style="
-                   -fx-text-fill: white;
-                   -fx-font-size: 24;
-                   -fx-font-weight: bold;
-                   "/>
-
-            <Button text="Browse"
-                    onAction="#goToBrowse"/>
+            <Button text="Browse Resources"
+                    onAction="#goToBrowse"
+                    maxWidth="Infinity"/>
 
             <Button text="Recommendations"
-                    onAction="#goToRecommendations"/>
+                    onAction="#goToRecommendations"
+                    maxWidth="Infinity"/>
 
-            <Button text="Profile"
-                    onAction="#goToProfile"/>
+            <Button text="My Profile"
+                    onAction="#goToProfile"
+                    maxWidth="Infinity"/>
 
             <Button text="Request Expert Access"
-                    onAction="#requestExpertAccess"/>
+                    onAction="#requestExpertAccess"
+                    maxWidth="Infinity"
+                    style="-fx-text-fill: #c58c62;"/>
 
-            <Button text="Logout"
-                    onAction="#handleLogout"/>
+            <VBox VBox.vgrow="ALWAYS"
+                  alignment="BOTTOM_CENTER">
+
+                <Button text="🌙 CINEMATIC VIEW"
+                        onAction="#handleToggleCinematic"
+                        maxWidth="Infinity"
+                        styleClass="toggle-cinematic"/>
+
+                <Button text="Logout"
+                        onAction="#handleLogout"
+                        maxWidth="Infinity"
+                        style="-fx-text-fill: #ff7675;"/>
+
+            </VBox>
 
         </VBox>
 
@@ -48,49 +65,158 @@
         <VBox spacing="20">
 
             <padding>
-                <Insets top="30"
-                        right="30"
-                        bottom="30"
-                        left="30"/>
+                <Insets top="40"
+                        right="40"
+                        bottom="40"
+                        left="40"/>
             </padding>
 
-            <Label text="Published Resources"
-                   style="
-               -fx-font-size: 30;
-               -fx-font-weight: bold;
-               "/>
+            <HBox spacing="20"
+                  alignment="CENTER_LEFT">
 
-            <HBox spacing="10">
+                <VBox HBox.hgrow="ALWAYS"
+                      spacing="5">
 
-                <TextField fx:id="searchField"
-                           promptText="Search resources..."/>
+                    <Label text="Dashboard"
+                           style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #1f1f1f;"/>
 
-                <Button text="SEARCH"
-                        onAction="#handleSearch"/>
+                    <Label text="Discover educational materials tailored just for you."
+                           style="-fx-font-size: 14; -fx-text-fill: #7b7b7b;"/>
+
+                </VBox>
+
+                <HBox spacing="10"
+                      alignment="CENTER_RIGHT">
+
+                    <TextField fx:id="searchField"
+                               promptText="Search resources..."
+                               prefWidth="280"
+                               style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.03), 10, 0, 0, 2);"/>
+
+                    <Button text="SEARCH"
+                            onAction="#handleSearch"
+                            style="-fx-background-color: #1f1f1f; -fx-text-fill: white; -fx-background-radius: 12; -fx-padding: 12 20; -fx-font-weight: bold; -fx-cursor: hand;"/>
+
+                </HBox>
+
+            </HBox>
+
+            <HBox spacing="10"
+                  alignment="CENTER_LEFT"
+                  style="-fx-padding: 0 0 5 0;">
+
+                <Label text="Filters:"
+                       style="-fx-font-weight: bold; -fx-text-fill: #7a6f66; -fx-font-size: 14; -fx-padding: 0 10 0 0;"/>
+
+                <Button text="All Content"
+                        onAction="#handleFilterAll"
+                        style="-fx-background-color: #1f1f1f; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 6 16; -fx-font-size: 12; -fx-font-weight: bold; -fx-cursor: hand;"/>
+
+                <Button text="Programming"
+                        onAction="#handleFilterProgramming"
+                        style="-fx-background-color: white; -fx-text-fill: #1f1f1f; -fx-background-radius: 20; -fx-padding: 6 16; -fx-font-size: 12; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.02), 5, 0, 0, 1); -fx-cursor: hand;"/>
+
+                <Button text="Business"
+                        onAction="#handleFilterBusiness"
+                        style="-fx-background-color: white; -fx-text-fill: #1f1f1f; -fx-background-radius: 20; -fx-padding: 6 16; -fx-font-size: 12; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.02), 5, 0, 0, 1); -fx-cursor: hand;"/>
+
+                <Button text="Beginner"
+                        onAction="#handleFilterBeginner"
+                        style="-fx-background-color: white; -fx-text-fill: #c58c62; -fx-border-color: #c58c62; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 5 15; -fx-font-size: 12; -fx-font-weight: bold; -fx-cursor: hand;"/>
+
+                <Button text="Advanced"
+                        onAction="#handleFilterAdvanced"
+                        style="-fx-background-color: white; -fx-text-fill: #b22222; -fx-border-color: #b22222; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 5 15; -fx-font-size: 12; -fx-font-weight: bold; -fx-cursor: hand;"/>
+
+                <Button text="Java"
+                        onAction="#handleFilterJava"
+                        style="-fx-background-color: white; -fx-text-fill: #5f5f5f; -fx-border-color: #d8d0c7; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 5 15; -fx-font-size: 12; -fx-font-weight: bold; -fx-cursor: hand;"/>
 
             </HBox>
 
             <TabPane fx:id="tabPane"
-                     tabClosingPolicy="UNAVAILABLE">
+                     tabClosingPolicy="UNAVAILABLE"
+                     VBox.vgrow="ALWAYS"
+                     style="-fx-background-color: transparent;">
 
                 <tabs>
 
                     <Tab fx:id="resourcesTab"
                          text="Resources">
 
-                        <VBox spacing="15">
+                        <StackPane VBox.vgrow="ALWAYS">
 
-                            <ListView fx:id="resourceListView"
-                                      prefHeight="400"/>
+                            <ScrollPane fx:id="homeScrollPane"
+                                        fitToWidth="true"
+                                        style="-fx-background: #f5f1eb; -fx-background-color: transparent; -fx-background-insets: 0; -fx-padding: 0;">
 
-                        </VBox>
+                                <VBox spacing="35"
+                                      style="-fx-background-color: transparent; -fx-padding: 10 10 20 0;">
+
+                                    <VBox spacing="10"
+                                          style="-fx-background-color: transparent;">
+
+                                        <Label text="Trending Materials"
+                                               style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #1f1f1f; -fx-padding: 0 0 0 5;"/>
+
+                                        <ListView fx:id="trendingListView"
+                                                  prefHeight="280"
+                                                  style="-fx-background-color: transparent; -fx-background-insets: 0;"/>
+                                    </VBox>
+
+                                    <VBox spacing="10"
+                                          style="-fx-background-color: transparent;">
+
+                                        <Label text="Recommended For You"
+                                               style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #c58c62; -fx-padding: 0 0 0 5;"/>
+
+                                        <ListView fx:id="recommendedListView"
+                                                  prefHeight="130"
+                                                  style="-fx-background-color: transparent; -fx-background-insets: 0;"/>
+                                    </VBox>
+
+                                    <VBox spacing="10"
+                                          style="-fx-background-color: transparent;">
+
+                                        <Label text="Recently Viewed"
+                                               style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7a6f66; -fx-padding: 0 0 0 5;"/>
+
+                                        <ListView fx:id="recentlyViewedListView"
+                                                  prefHeight="190"
+                                                  style="-fx-background-color: transparent; -fx-background-insets: 0;"/>
+                                    </VBox>
+
+                                </VBox>
+
+                            </ScrollPane>
+
+                            <VBox fx:id="searchResultsContainer"
+                                  visible="false"
+                                  managed="false"
+                                  style="-fx-background-color: transparent; -fx-padding: 10 10 0 0;">
+
+                                <ListView fx:id="resourceListView"
+                                          style="-fx-background-color: transparent; -fx-background-insets: 0;"
+                                          VBox.vgrow="ALWAYS"/>
+
+                            </VBox>
+
+                        </StackPane>
 
                     </Tab>
 
                     <Tab fx:id="profileTab"
                          text="Profile">
 
-                        <fx:include source="profile.fxml"/>
+                        <VBox style="-fx-padding: 15 0 0 0;">
+
+                            <VBox style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 15, 0, 0, 6);">
+
+                                <fx:include source="profile.fxml"/>
+
+                            </VBox>
+
+                        </VBox>
 
                     </Tab>
 

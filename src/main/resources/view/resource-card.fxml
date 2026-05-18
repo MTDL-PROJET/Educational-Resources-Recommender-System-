@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox spacing="15" styleClass="resource-card" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.ResourceCardController">
+    <ImageView fx:id="resourceImage" fitWidth="80" fitHeight="80" styleClass="resource-image" />
+
+    <VBox spacing="8" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+        <Label fx:id="titleLabel" styleClass="resource-title" />
+
+        <HBox spacing="10">
+            <Label fx:id="categoryLabel" styleClass="badge, category-badge" />
+            <Label fx:id="difficultyLabel" styleClass="badge, difficulty-badge" />
+        </HBox>
+
+        <Label fx:id="tagsLabel" styleClass="resource-tags" />
+    </VBox>
+
+    <VBox alignment="BOTTOM_RIGHT" spacing="5">
+        <Label fx:id="viewsLabel" styleClass="stats-label" />
+        <Label fx:id="likesLabel" styleClass="stats-label" />
+    </VBox>
+</HBox>

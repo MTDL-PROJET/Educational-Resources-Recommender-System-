@@ -3,41 +3,202 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
+<HBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="controller.ProfileController"
-
-      spacing="18"
-      alignment="CENTER">
+      spacing="40"
+      alignment="CENTER"
+      style="-fx-background-color: white;">
 
     <padding>
-        <Insets top="40"
-                right="40"
-                bottom="40"
-                left="40"/>
+        <Insets top="30"
+                right="30"
+                bottom="30"
+                left="30"/>
     </padding>
 
-    <Label text="My Profile"
-           style="
-           -fx-font-size: 30;
-           -fx-font-weight: bold;
-           "/>
+    <VBox spacing="20"
+          alignment="TOP_CENTER"
+          prefWidth="240"
+          style="-fx-background-color: #f7f4ef;
+                 -fx-background-radius: 15;
+                 -fx-padding: 25;">
 
-    <TextField fx:id="nameField"
-               promptText="Full Name"/>
+        <VBox alignment="CENTER"
+              style="-fx-background-color: white;
+                     -fx-background-radius: 20;
+                     -fx-padding: 10;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 10, 0, 0, 2);">
 
-    <TextField fx:id="imageField"
-               promptText="Profile Picture URL"/>
+            <ImageView fx:id="profileClippedImage"
+                       fitWidth="120"
+                       fitHeight="120"
+                       preserveRatio="true"/>
 
-    <TextField fx:id="emailField"
-               promptText="Email"
-               editable="false"/>
+        </VBox>
 
-    <TextField fx:id="roleField"
-               promptText="Role"
-               editable="false"/>
+        <VBox spacing="5"
+              alignment="CENTER">
 
-    <Button text="UPDATE PROFILE"
-            onAction="#handleUpdateProfile"/>
+            <Label text="ACCOUNT STATUS"
+                   style="-fx-font-size: 10;
+                          -fx-text-fill: #9a9a9a;
+                          -fx-font-weight: bold;"/>
 
-</VBox>
+            <Label fx:id="statusBadgeLabel"
+                   text="STUDENT"
+                   style="-fx-background-color: #1f1f1f;
+                          -fx-text-fill: white;
+                          -fx-padding: 5 14;
+                          -fx-background-radius: 10;
+                          -fx-font-size: 11;
+                          -fx-font-weight: bold;"/>
+
+        </VBox>
+
+        <HBox spacing="12"
+              alignment="CENTER"
+              style="-fx-padding: 10 0 0 0;">
+
+            <VBox alignment="CENTER"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 12;
+                         -fx-padding: 12 8;
+                         -fx-pref-width: 90;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.02), 8, 0, 0, 1);">
+
+                <Label text="🔥"
+                       style="-fx-font-size: 18;"/>
+
+                <Label text="Active"
+                       style="-fx-font-size: 12;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: #1f1f1f;"/>
+
+                <Label text="Status"
+                       style="-fx-font-size: 10;
+                              -fx-text-fill: #7b7b7b;"/>
+
+            </VBox>
+
+            <VBox alignment="CENTER"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 12;
+                         -fx-padding: 12 8;
+                         -fx-pref-width: 90;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.02), 8, 0, 0, 1);">
+
+                <Label text="💎"
+                       style="-fx-font-size: 18;"/>
+
+                <Label text="Premium"
+                       style="-fx-font-size: 12;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: #c58c62;"/>
+
+                <Label text="Access"
+                       style="-fx-font-size: 10;
+                              -fx-text-fill: #7b7b7b;"/>
+
+            </VBox>
+
+        </HBox>
+
+    </VBox>
+
+    <VBox spacing="20"
+          HBox.hgrow="ALWAYS"
+          maxWidth="420"
+          alignment="CENTER_LEFT">
+
+        <VBox spacing="5">
+
+            <Label text="Account Settings"
+                   style="-fx-font-size: 24;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #1f1f1f;"/>
+
+            <Label text="Keep your profile up to date for better recommendations."
+                   style="-fx-font-size: 13;
+                          -fx-text-fill: #7b7b7b;"/>
+
+        </VBox>
+
+        <GridPane vgap="14"
+                  hgap="10">
+
+            <columnConstraints>
+                <ColumnConstraints prefWidth="110"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Full Name:"
+                   GridPane.rowIndex="0"
+                   GridPane.columnIndex="0"
+                   style="-fx-font-weight: bold;
+                          -fx-text-fill: #5f5f5f;"/>
+
+            <TextField fx:id="nameField"
+                       promptText="Full Name"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="1"/>
+
+            <Label text="Avatar URL:"
+                   GridPane.rowIndex="1"
+                   GridPane.columnIndex="0"
+                   style="-fx-font-weight: bold;
+                          -fx-text-fill: #5f5f5f;"/>
+
+            <TextField fx:id="imageField"
+                       promptText="Paste image link here..."
+                       GridPane.rowIndex="1"
+                       GridPane.columnIndex="1"/>
+
+            <Label text="Email Address:"
+                   GridPane.rowIndex="2"
+                   GridPane.columnIndex="0"
+                   style="-fx-font-weight: bold;
+                          -fx-text-fill: #5f5f5f;"/>
+
+            <TextField fx:id="emailField"
+                       promptText="Email"
+                       editable="false"
+                       GridPane.rowIndex="2"
+                       GridPane.columnIndex="1"
+                       style="-fx-opacity: 0.65;
+                              -fx-background-color: #f7f4ef;"/>
+
+            <Label text="System Role:"
+                   GridPane.rowIndex="3"
+                   GridPane.columnIndex="0"
+                   style="-fx-font-weight: bold;
+                          -fx-text-fill: #5f5f5f;"/>
+
+            <TextField fx:id="roleField"
+                       promptText="Role"
+                       editable="false"
+                       GridPane.rowIndex="3"
+                       GridPane.columnIndex="1"
+                       style="-fx-opacity: 0.65;
+                              -fx-background-color: #f7f4ef;"/>
+
+        </GridPane>
+
+        <VBox alignment="CENTER_RIGHT"
+              style="-fx-padding: 10 0 0 0;">
+
+            <Button text="SAVE CHANGES"
+                    onAction="#handleUpdateProfile"
+                    style="-fx-background-color: #1f1f1f;
+                           -fx-text-fill: white;
+                           -fx-background-radius: 12;
+                           -fx-padding: 13 32;
+                           -fx-font-weight: bold;
+                           -fx-cursor: hand;"/>
+
+        </VBox>
+
+    </VBox>
+
+</HBox>

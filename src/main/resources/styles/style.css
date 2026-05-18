@@ -156,64 +156,384 @@
 
     -fx-background-color: #f7f4ef;
 }
-```
 
----
+/*RESOURCE CARD STYLES */
+.resource-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 15, 0.1, 0, 5);
+}
+.resource-title {
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f1f1f;
+}
 
-## login.fxml
+.badge {
+    -fx-padding: 4 10 4 10;
+    -fx-background-radius: 12;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+}
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
+.category-badge {
+    -fx-background-color: #e7ddd1;
+    -fx-text-fill: #7a6f66;
+}
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+.difficulty-badge {
+    -fx-background-color: #1f1f1f;
+    -fx-text-fill: white;
+}
 
-<HBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controller.LoginController">
+.resource-tags {
+    -fx-font-size: 12;
+    -fx-text-fill: #a0a0a0;
+    -fx-font-style: italic;
+}
 
-    <VBox prefWidth="520"
-          spacing="25"
-          alignment="CENTER_LEFT"
-          styleClass="left-panel">
+.stats-label {
+    -fx-font-size: 13;
+    -fx-text-fill: #c58c62;
+    -fx-font-weight: bold;
+}
 
-        <Label text="Learn better.\nFaster."
-               styleClass="big-title"/>
+/* HIDE TAB HEADERS */
+.tab-pane .tab-header-area {
+    -fx-max-height: 0;
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-padding: 0;
+    -fx-opacity: 0;
+}
 
-        <Label text="A curated educational platform where students discover resources through intelligent recommendations."
-               styleClass="description"/>
+/* TABLE VIEW STYLES */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-base: transparent;
+}
 
-        <Label text="Built for modern learners."
-               styleClass="quote"/>
+.table-view .column-header-background {
+    -fx-background-color: #f7f4ef;
+    -fx-background-radius: 10 10 0 0;
+    -fx-padding: 5;
+}
 
-    </VBox>
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-size: 40;
+}
 
-    <StackPane HBox.hgrow="ALWAYS"
-               alignment="CENTER">
+.table-view .column-header .label {
+    -fx-text-fill: #1f1f1f;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
 
-        <VBox alignment="CENTER"
-              styleClass="login-card">
+.table-view .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: #f5f1eb;
+    -fx-border-width: 0 0 1 0;
+    -fx-cell-size: 50;
+    -fx-text-fill: #222222;
+    -fx-font-size: 14px;
+}
 
-            <Label text="Welcome back"
-                   styleClass="login-title"/>
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: #fdfbf7;
+}
 
-            <Label text="Sign in to continue"
-                   styleClass="login-subtitle"/>
+.table-view .placeholder .label {
+    -fx-text-fill: #9a9a9a;
+    -fx-font-size: 14px;
+}
 
-            <TextField fx:id="emailField"
-                       promptText="Email"/>
+/* SCROLLBAR */
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
 
-            <PasswordField fx:id="passwordField"
-                            promptText="Password"/>
+    -fx-background-color: transparent;
 
-            <Button text="LOGIN"
-                    onAction="#handleLogin"/>
+    -fx-padding: 0;
 
-            <Button text="CREATE ACCOUNT"
-                    styleClass="secondary-button"/>
+    -fx-pref-width: 8;
 
-        </VBox>
+    -fx-pref-height: 8;
+}
 
-    </StackPane>
+.scroll-bar:vertical .track,
+.scroll-bar:horizontal .track {
 
-</HBox>
+    -fx-background-color: transparent;
+
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:vertical .thumb,
+.scroll-bar:horizontal .thumb {
+
+    -fx-background-color: #d8d0c7;
+
+    -fx-background-radius: 10;
+}
+
+.scroll-bar:vertical .thumb:hover,
+.scroll-bar:horizontal .thumb:hover {
+
+    -fx-background-color: #c58c62;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+
+    -fx-background-color: transparent;
+
+    -fx-padding: 0;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+
+    -fx-shape: " ";
+
+    -fx-padding: 0;
+}
+
+/*ANIMATIONS & HOVER EFFECTS */
+
+.resource-card:hover {
+
+    -fx-translate-y: -6;
+
+    -fx-effect: dropshadow(gaussian, rgba(197, 140, 98, 0.4), 25, 0, 0, 8);
+
+    -fx-cursor: hand;
+
+}
+
+
+.button:hover {
+
+    -fx-opacity: 0.85;
+
+}
+
+
+.table-view .table-row-cell:hover {
+
+    -fx-background-color: #fdfbf7;
+
+    -fx-cursor: hand;
+
+}
+
+
+.text-field:focused,
+.password-field:focused {
+
+    -fx-border-color: #c58c62;
+
+    -fx-border-width: 2;
+
+    -fx-effect: dropshadow(gaussian, rgba(197, 140, 98, 0.2), 10, 0, 0, 2);
+
+}
+
+/* CINEMATIC MODE */
+/* =========================================
+   ✨ REPARATIE FINALA: LIGHT & CINEMATIC ✨
+   ========================================= */
+
+/* --- 🌟 1. SETARI GLOBALE PENTRU AMBELE MODURI 🌟 --- */
+
+/* Facem listele complet transparente pentru a prelua culoarea din spate, indiferent de modul activ */
+.list-view,
+.list-view > .virtual-flow,
+.list-view > .virtual-flow > .clipped-container,
+.list-view > .virtual-flow > .clipped-container > .sheet,
+.list-cell {
+
+    -fx-background-color: transparent !important;
+
+    -fx-background: transparent !important;
+
+    -fx-control-inner-background: transparent !important;
+
+}
+
+/* Butonul de Cinematic */
+.toggle-cinematic {
+
+    -fx-background-color: transparent;
+
+    -fx-border-color: #c58c62;
+
+    -fx-border-radius: 10;
+
+    -fx-text-fill: #c58c62;
+
+    -fx-font-weight: bold;
+
+    -fx-cursor: hand;
+
+}
+
+.toggle-cinematic:hover {
+
+    -fx-background-color: rgba(197, 140, 98, 0.1);
+
+}
+
+/* LIGHT MODE */
+
+.resource-card {
+    -fx-background-color: white !important;
+    -fx-background-radius: 15 !important;
+    -fx-border-color: transparent !important;
+    -fx-border-width: 0 !important;
+    -fx-padding: 15 !important;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 15, 0.1, 0, 5) !important;
+    -fx-transition: 0.2s !important;
+}
+
+.resource-card:hover {
+    -fx-translate-y: -6 !important;
+    -fx-effect: dropshadow(gaussian, rgba(197, 140, 98, 0.4), 25, 0, 0, 8) !important;
+    -fx-cursor: hand !important;
+}
+
+.resource-title {
+    -fx-text-fill: #1f1f1f !important;
+    -fx-font-size: 18 !important;
+    -fx-font-weight: bold !important;
+}
+
+.stats-label {
+    -fx-text-fill: #c58c62 !important;
+    -fx-font-weight: bold !important;
+}
+
+.cinematic-mode {
+    -fx-background-color: #101010 !important;
+    -fx-base: #101010 !important;
+    -fx-background: #101010 !important;
+    -fx-control-inner-background: #101010 !important;
+}
+
+.cinematic-mode .left > VBox {
+    -fx-background-color: #080808 !important;
+    -fx-border-color: transparent #1f1f1f transparent transparent !important;
+    -fx-border-width: 1 !important;
+}
+
+.cinematic-mode #tableContainer > VBox,
+.cinematic-mode #analyticsContainer > HBox > VBox,
+.cinematic-mode #profileTab > VBox > VBox,
+.cinematic-mode .center > VBox {
+    -fx-background-color: #181818 !important;
+    -fx-border-color: #262626 !important;
+    -fx-border-width: 1 !important;
+    -fx-background-radius: 20 !important;
+    -fx-border-radius: 20 !important;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 15, 0, 0, 5) !important;
+}
+
+.cinematic-mode #rootPane > .center > VBox {
+    -fx-background-color: transparent !important;
+    -fx-border-color: transparent !important;
+    -fx-effect: none !important;
+}
+
+.cinematic-mode .resource-card {
+    -fx-background-color: #1c1c1c !important;
+    -fx-border-color: #2e2e2e !important;
+    -fx-border-width: 1 !important;
+    -fx-border-radius: 15 !important;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 20, 0, 0, 5) !important;
+}
+
+.cinematic-mode .resource-title,
+.cinematic-mode .big-title {
+    -fx-text-fill: #ffffff !important;
+}
+
+.cinematic-mode .label {
+    -fx-text-fill: #b3b3b3 !important;
+}
+
+.cinematic-mode .stats-label {
+    -fx-text-fill: #c58c62 !important;
+}
+
+.cinematic-mode .text-field,
+.cinematic-mode .password-field,
+.cinematic-mode .text-area,
+.cinematic-mode .text-area .content {
+    -fx-background-color: #1f1f1f !important;
+    -fx-text-fill: #ffffff !important;
+    -fx-prompt-text-fill: #666666 !important;
+    -fx-border-color: #333333 !important;
+    -fx-border-radius: 12 !important;
+    -fx-background-radius: 12 !important;
+}
+
+.cinematic-mode .text-field:focused,
+.cinematic-mode .password-field:focused,
+.cinematic-mode .text-area:focused {
+    -fx-border-color: #c58c62 !important;
+}
+
+.cinematic-mode .table-view .column-header-background,
+.cinematic-mode .table-view .column-header,
+.cinematic-mode .table-view .filler {
+    -fx-background-color: #181818 !important;
+    -fx-border-color: #262626 !important;
+    -fx-border-width: 0 0 1 0 !important;
+}
+
+.cinematic-mode .table-view .column-header .label {
+    -fx-text-fill: #ffffff !important;
+    -fx-font-weight: bold !important;
+}
+
+.cinematic-mode .table-view .table-row-cell {
+    -fx-background-color: #121212 !important;
+    -fx-border-color: #262626 !important;
+    -fx-border-width: 0 0 1 0 !important;
+}
+
+.cinematic-mode .table-view .table-cell {
+    -fx-text-fill: #d0d0d0 !important;
+}
+
+.cinematic-mode .table-view .table-row-cell:hover {
+    -fx-background-color: #1f1f1f !important;
+}
+
+.cinematic-mode .table-view .table-row-cell:filled:selected {
+    -fx-background-color: #222222 !important;
+    -fx-border-color: #c58c62 !important;
+    -fx-border-width: 0 0 0 3 !important;
+}
+
+.cinematic-mode .chart-plot-background {
+    -fx-background-color: transparent !important;
+}
+
+.cinematic-mode .chart-pie {
+    -fx-border-color: #181818 !important;
+    -fx-border-width: 2px !important;
+}
+
+.cinematic-mode .axis {
+    -fx-tick-label-fill: #a0a0a0 !important;
+}
+
+.cinematic-mode .chart-legend {
+    -fx-background-color: transparent !important;
+}
+
+.cinematic-mode .chart-legend-item {
+    -fx-text-fill: #d0d0d0 !important;
+}

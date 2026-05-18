@@ -1,37 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml"
-           fx:controller="controller.LoginController">
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.LoginController"
+      style="-fx-background-color: #f5f1eb;">
 
-    <VBox spacing="18"
-          alignment="CENTER"
+    <VBox prefWidth="520"
+          spacing="25"
+          alignment="CENTER_LEFT"
+          styleClass="left-panel"
+          style="-fx-background-color: #e7ddd1; -fx-padding: 70;">
 
-          maxWidth="430"
+        <Label text="Learn better.&#10;Faster."
+               styleClass="big-title"
+               style="-fx-font-size: 48; -fx-font-weight: bold; -fx-text-fill: #1f1f1f;"/>
 
-          styleClass="login-card">
+        <Label text="A curated educational platform where students discover resources through intelligent recommendations."
+               styleClass="description"
+               style="-fx-font-size: 16; -fx-text-fill: #5f5f5f; -fx-wrap-text: true;"/>
 
-        <Label text="Welcome Back"
-               styleClass="title"/>
-
-        <Label text="Login to continue"
-               styleClass="subtitle"/>
-
-        <TextField fx:id="emailField"
-                   promptText="Email"/>
-
-        <PasswordField fx:id="passwordField"
-                       promptText="Password"/>
-
-        <Button text="LOGIN"
-                onAction="#handleLogin"/>
-
-        <Button text="CREATE ACCOUNT"
-                onAction="#goToRegister"
-                styleClass="secondary-button"/>
+        <Label text="Built for modern learners."
+               styleClass="quote"
+               style="-fx-font-size: 14; -fx-font-style: italic; -fx-text-fill: #7a6f66;"/>
 
     </VBox>
 
-</StackPane>
+    <StackPane HBox.hgrow="ALWAYS"
+               alignment="CENTER">
+
+        <VBox alignment="CENTER"
+              spacing="20"
+              styleClass="login-card"
+              style="-fx-background-color: white; -fx-background-radius: 30; -fx-padding: 50; -fx-max-width: 420; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 30, 0, 0, 10);">
+
+            <Label text="Welcome Back"
+                   style="-fx-font-size: 30; -fx-font-weight: bold; -fx-text-fill: #1f1f1f;"/>
+
+            <Label text="Sign in to continue your journey"
+                   style="-fx-font-size: 14; -fx-text-fill: #7b7b7b; -fx-padding: 0 0 10 0;"/>
+
+            <TextField fx:id="emailField"
+                       promptText="Email"/>
+
+            <PasswordField fx:id="passwordField"
+                           promptText="Password"/>
+
+            <VBox spacing="12"
+                  alignment="CENTER"
+                  style="-fx-padding: 15 0 0 0;">
+
+                <Button text="LOGIN"
+                        onAction="#handleLogin"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: #1f1f1f; -fx-text-fill: white; -fx-background-radius: 12; -fx-padding: 14 0; -fx-font-weight: bold; -fx-cursor: hand;"/>
+
+                <Button text="CREATE ACCOUNT"
+                        onAction="#goToRegister"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: transparent; -fx-text-fill: #1f1f1f; -fx-border-color: #d8d0c7; -fx-border-radius: 12; -fx-background-radius: 12; -fx-padding: 14 0; -fx-font-weight: bold; -fx-cursor: hand;"/>
+
+            </VBox>
+
+        </VBox>
+
+    </StackPane>
+
+</HBox>

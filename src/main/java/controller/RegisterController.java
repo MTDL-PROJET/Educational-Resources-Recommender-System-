@@ -12,7 +12,7 @@ import utils.AlertUtils;
 public class RegisterController {
 
     @FXML
-    private TextField nameField;
+    private TextField fullNameField;
 
     @FXML
     private TextField emailField;
@@ -29,7 +29,7 @@ public class RegisterController {
         boolean success =
                 authService.register(
 
-                        nameField.getText(),
+                        fullNameField.getText(),
                         emailField.getText(),
                         passwordField.getText()
 
@@ -77,7 +77,7 @@ public class RegisterController {
             );
 
             Stage stage =
-                    (Stage) nameField
+                    (Stage) emailField
                             .getScene()
                             .getWindow();
 

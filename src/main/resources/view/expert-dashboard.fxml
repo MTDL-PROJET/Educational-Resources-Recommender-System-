@@ -5,33 +5,47 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.ExpertController">
+            fx:controller="controller.ExpertController"
+            fx:id="rootPane"
+            style="-fx-background-color: #f5f1eb;">
 
     <left>
 
-        <VBox prefWidth="220"
+        <VBox prefWidth="250"
               spacing="15"
+              style="-fx-background-color: #1f1f1f; -fx-padding: 35 20 20 20;">
 
-              style="
-              -fx-background-color: #1f1f1f;
-              -fx-padding: 25;
-              ">
+            <Label text="EXPERT HUB"
+                   style="-fx-text-fill: white;
+                          -fx-font-size: 22;
+                          -fx-font-weight: bold;
+                          -fx-border-color: #c58c62;
+                          -fx-border-width: 0 0 2 0;
+                          -fx-padding: 0 0 8 0;
+                          -fx-margin: 0 0 15 0;"/>
 
-            <Label text="EXPERT PANEL"
-                   style="
-                   -fx-text-fill: white;
-                   -fx-font-size: 24;
-                   -fx-font-weight: bold;
-                   "/>
+            <Button text="Add New Resource"
+                    onAction="#goToAddResource"
+                    maxWidth="Infinity"/>
 
-            <Button text="Add Resource"
-                    onAction="#goToAddResource"/>
+            <Button text="Manage Content"
+                    onAction="#goToManageResources"
+                    maxWidth="Infinity"/>
 
-            <Button text="Manage Resources"
-                    onAction="#goToManageResources"/>
+            <VBox VBox.vgrow="ALWAYS"
+                  alignment="BOTTOM_CENTER">
 
-            <Button text="Logout"
-                    onAction="#handleLogout"/>
+                <Button text="🌙 CINEMATIC VIEW"
+                        onAction="#handleToggleCinematic"
+                        maxWidth="Infinity"
+                        styleClass="toggle-cinematic"/>
+
+                <Button text="Logout"
+                        onAction="#handleLogout"
+                        maxWidth="Infinity"
+                        style="-fx-text-fill: #ff7675;"/>
+
+            </VBox>
 
         </VBox>
 

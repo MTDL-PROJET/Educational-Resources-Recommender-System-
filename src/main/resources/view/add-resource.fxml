@@ -5,51 +5,58 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.ResourceController">
+            fx:controller="controller.ResourceController"
+            style="-fx-background-color: #f5f1eb;">
 
     <center>
 
-        <VBox spacing="18"
-              alignment="CENTER"
-              maxWidth="500">
+        <VBox spacing="20"
+              alignment="CENTER_LEFT"
+              maxWidth="580"
+              style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 35; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 20, 0, 0, 8);">
 
-            <padding>
-                <Insets top="40"
-                        right="40"
-                        bottom="40"
-                        left="40"/>
-            </padding>
+            <VBox spacing="5"
+                  style="-fx-padding: 0 0 10 0;">
 
-            <Label text="Add Resource"
-                   style="
-                   -fx-font-size: 28;
-                   -fx-font-weight: bold;
-                   "/>
+                <Label text="Publish New Resource"
+                       style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #1f1f1f;"/>
+
+                <Label text="Provide detailed information to share this material."
+                       style="-fx-font-size: 13; -fx-text-fill: #7b7b7b;"/>
+
+            </VBox>
 
             <TextField fx:id="titleField"
-                       promptText="Title"/>
+                       promptText="Resource Title"/>
 
             <TextArea fx:id="descriptionField"
-                      promptText="Description"
-                      prefHeight="120"/>
+                      promptText="Detailed Description"
+                      prefHeight="100"
+                      styleClass="text-area"/>
 
             <TextField fx:id="imageField"
-                       promptText="Image URL"/>
+                       promptText="Cover Image URL (e.g., https://link.com/cover.png)"/>
 
             <TextField fx:id="linkField"
-                       promptText="External Link"/>
+                       promptText="External Course Link"/>
 
             <TextField fx:id="categoryField"
-                       promptText="Category"/>
+                       promptText="Category (e.g., Programming, Business)"/>
 
             <TextField fx:id="tagsField"
-                       promptText="Tags (java,spring,backend)"/>
+                       promptText="Tags (comma-separated: java, spring, backend)"/>
 
             <TextField fx:id="difficultyField"
-                       promptText="Difficulty (Beginner/Intermediate/Advanced)"/>
+                       promptText="Difficulty Level (Beginner / Intermediate / Advanced)"/>
 
-            <Button text="ADD RESOURCE"
-                    onAction="#handleAddResource"/>
+            <VBox alignment="CENTER_RIGHT"
+                  style="-fx-padding: 10 0 0 0;">
+
+                <Button text="PUBLISH MATERIAL"
+                        onAction="#handleAddResource"
+                        style="-fx-background-color: #1f1f1f; -fx-text-fill: white; -fx-background-radius: 12; -fx-padding: 14 32; -fx-font-weight: bold; -fx-cursor: hand;"/>
+
+            </VBox>
 
         </VBox>
 

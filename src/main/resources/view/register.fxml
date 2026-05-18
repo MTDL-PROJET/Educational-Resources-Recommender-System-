@@ -5,21 +5,26 @@
 <?import javafx.scene.layout.*?>
 
 <HBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controller.RegisterController">
+      fx:controller="controller.RegisterController"
+      style="-fx-background-color: #f5f1eb;">
 
     <VBox prefWidth="520"
           spacing="25"
           alignment="CENTER_LEFT"
-          styleClass="left-panel">
+          styleClass="left-panel"
+          style="-fx-background-color: #e7ddd1; -fx-padding: 70;">
 
-        <Label text="Create your\\nlearning space."
-               styleClass="big-title"/>
+        <Label text="Join the&#10;Community."
+               styleClass="big-title"
+               style="-fx-font-size: 48; -fx-font-weight: bold; -fx-text-fill: #1f1f1f;"/>
 
-        <Label text="Join the platform and discover personalized educational resources."
-               styleClass="description"/>
+        <Label text="Create your account to access personalized courses, track your progress, and get expert guidance."
+               styleClass="description"
+               style="-fx-font-size: 16; -fx-text-fill: #5f5f5f; -fx-wrap-text: true;"/>
 
-        <Label text="Powered by recommendations."
-               styleClass="quote"/>
+        <Label text="Your journey starts here."
+               styleClass="quote"
+               style="-fx-font-size: 14; -fx-font-style: italic; -fx-text-fill: #7a6f66;"/>
 
     </VBox>
 
@@ -27,29 +32,40 @@
                alignment="CENTER">
 
         <VBox alignment="CENTER"
-              styleClass="login-card">
+              spacing="18"
+              styleClass="login-card"
+              style="-fx-background-color: white; -fx-background-radius: 30; -fx-padding: 45; -fx-max-width: 440; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 30, 0, 0, 10);">
 
-            <Label text="Create account"
-                   styleClass="login-title"/>
+            <Label text="Create Account"
+                   style="-fx-font-size: 30; -fx-font-weight: bold; -fx-text-fill: #1f1f1f;"/>
 
-            <Label text="Start your journey"
-                   styleClass="login-subtitle"/>
+            <Label text="Enter your details to register"
+                   style="-fx-font-size: 14; -fx-text-fill: #7b7b7b; -fx-padding: 0 0 10 0;"/>
 
-            <TextField fx:id="nameField"
+            <TextField fx:id="fullNameField"
                        promptText="Full Name"/>
 
             <TextField fx:id="emailField"
-                       promptText="Email"/>
+                       promptText="Email Address"/>
 
             <PasswordField fx:id="passwordField"
-                           promptText="Password"/>
+                           promptText="Create Password"/>
 
-            <Button text="REGISTER"
-                    onAction="#handleRegister"/>
+            <VBox spacing="12"
+                  alignment="CENTER"
+                  style="-fx-padding: 15 0 0 0;">
 
-            <Button text="BACK TO LOGIN"
-                    onAction="#goToLogin"
-                    styleClass="secondary-button"/>
+                <Button text="REGISTER NOW"
+                        onAction="#handleRegister"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: #1f1f1f; -fx-text-fill: white; -fx-background-radius: 12; -fx-padding: 14 0; -fx-font-weight: bold; -fx-cursor: hand;"/>
+
+                <Button text="ALREADY HAVE AN ACCOUNT?"
+                        onAction="#goToLogin"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: transparent; -fx-text-fill: #1f1f1f; -fx-border-color: #d8d0c7; -fx-border-radius: 12; -fx-background-radius: 12; -fx-padding: 14 0; -fx-font-weight: bold; -fx-cursor: hand;"/>
+
+            </VBox>
 
         </VBox>
 
