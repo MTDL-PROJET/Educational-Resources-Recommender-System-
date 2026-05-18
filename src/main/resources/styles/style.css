@@ -341,13 +341,7 @@
 }
 
 /* CINEMATIC MODE */
-/* =========================================
-   ✨ REPARATIE FINALA: LIGHT & CINEMATIC ✨
-   ========================================= */
 
-/* --- 🌟 1. SETARI GLOBALE PENTRU AMBELE MODURI 🌟 --- */
-
-/* Facem listele complet transparente pentru a prelua culoarea din spate, indiferent de modul activ */
 .list-view,
 .list-view > .virtual-flow,
 .list-view > .virtual-flow > .clipped-container,
